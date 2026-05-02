@@ -92,3 +92,85 @@ a {
 .typewriter-cursor {
     display: none !important;
 }
+
+/* ============================================================ */
+/* REPARATIE PENTRU MOBIL (Se activează doar pe ecrane mici)      */
+/* ============================================================ */
+
+@media only screen and (max-width: 768px) {
+    body {
+        /* Permitem scroll-ul pe mobil, altfel textul se va tăia */
+        overflow: auto; 
+        padding: 10px;
+        background-color: #F5E8DC; /* Culoarea de fundal să fie uniformă */
+    }
+
+    #wrap {
+        /* Scoatem lățimea fixă și o facem flexibilă */
+        width: 100% !important;
+        max-width: 400px; /* Lățimea maximă a unui telefon */
+        margin: 0 auto;
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        display: flex;
+        flex-direction: column-reverse; /* Punem textul SUS, copacul JOS */
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    #text {
+        /* Textul devine o secțiune normală, nu absolută */
+        width: 100% !important;
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        margin-top: 0 !important;
+        padding: 15px;
+        box-sizing: border-box;
+        height: auto !important;
+        text-align: left;
+    }
+
+    #code {
+        /* Micșorăm fontul pentru a încape pe mobil */
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Ajustăm cronometrul de jos să nu se taie */
+    #clock-box {
+        position: relative !important;
+        width: 100% !important;
+        text-align: center;
+        margin: 20px 0 !important;
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    #timer-text {
+        font-size: 14px !important;
+    }
+
+    #clock {
+        font-size: 18px !important;
+    }
+
+    #clock .digit {
+        font-size: 32px !important; /* Cifrele cronometrului mai mari, textul mai mic */
+    }
+
+    #canvas {
+        /* Aici e trucul: JavaScript crede că are lățime fixă,      */
+        /* dar CSS-ul îl forțează să se scaleze în container.      */
+        width: 100% !important; 
+        height: auto !important;
+        max-width: 1100px;
+        aspect-ratio: 1100 / 680; /* Menținem proporția, nu distorsionăm inima */
+        position: relative !important;
+        display: block;
+        margin: 0 auto;
+        transform: none !important; /* Scoatem acea translație care îl muta la dreapta */
+        margin-bottom: 20px; /* Spațiu sub copac */
+    }
+}
